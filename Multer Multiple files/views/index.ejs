@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Upload Multiple Files</title>
+  </head>
+  <body>
+    <form>
+      <input id="files" type="file" id="fileInput" name="files" multiple />
+      <button type="button" onclick="uploadFiles()">Upload</button>
+    </form>
+
+    <script>
+      async function uploadFiles() {
+        const input = document.getElementById("files");
+        const formData = new FormData();
+
+        for (let i = 0; i < input.files.length; i++) {
+          formData.append("files", input.files[i]);
+        }
+
+        // console.log(Object.fromEntries(formData));
+
+        try {
+          const response = await fetch("http://localhost:3000/upload", {
+            method: "POST",
+            body: formData,
+          });
+
+          if (response.ok) {
+            const result = await response.text();
+            alert(result);
+          } else {
+            alert("Error uploading files");
+          }
+        } catch (error) {
+          alert("Error: " + error.message);
+        }
+      }
+    </script>
+  </body>
+</html>

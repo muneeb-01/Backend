@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>File sharing system</title>
+  </head>
+  <body>
+    <div class="flex justify-center items-center py-4">
+      <img src="/img/logo.png" alt="Inshare logo" class="w-[10vw]" />
+    </div>
+    <div class="w-[100%] h-[90.1vh] flex flex-col justify-center items-center">
+      <form
+        method="post"
+        class="w-[32rem] flex flex-col justify-center items-center"
+        action="/api/files"
+        enctype="multipart/form-data"
+      >
+        <h1 class="text-center"></h1>
+        <img
+          class="download__icon size-[16vw] mb-4"
+          src="/img/download-sd.svg"
+          alt="inshare-download"
+        />
+        <div class="input-box items-center">
+          <input type="file" placeholder="file" name="myfile" required />
+        </div>
+        <button
+          type="submit"
+          class="bg-[#03a9f4] text-white py-1 rounded-lg font-semibold mt-6 px-4"
+        >
+          Upload
+        </button>
+      </form>
+      <p class="mt-6">
+        Download Link:
+        <span class="text-blue-500 underline cursor-pointer">Link</span>
+      </p>
+    </div>
+  </body>
+</html>
